@@ -9,5 +9,6 @@ namespace ShortUrl.DataAccess.Interfaces
         Address Load(Guid addressId);
 
         void Add(Address entity);
+        void Edit(Address entity);
     }
 }

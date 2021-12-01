@@ -18,12 +18,18 @@ namespace ShortUrl.DataAccess.Repositories
         }
         public Address Load(Guid addressId)
         {
-            return _AddressDbContext.Addresses.Where(o => o.AddressId == addressId).FirstOrDefault();
+            return _AddressDbContext.Addresses.FirstOrDefault(o => o.AddressId == addressId);
         }
 
         public void Add(Address entity)
         {
             _AddressDbContext.Addresses.Add(entity);
+            _AddressDbContext.SaveChanges();
+        }
+
+        public void Edit(Address entity)
+        {
+            _AddressDbContext.Addresses.Update(entity);
             _AddressDbContext.SaveChanges();
         }
     }
